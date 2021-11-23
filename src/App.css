@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab&family=Quicksand&family=Red+Hat+Mono&display=swap');
+
+:root {
+  --primary-white: #fff;
+  --primary-dark: rgba(255, 255, 255, 0);
+  --primary-blue: rgb(73, 131, 158);
+}
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +47,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Navbar styling */
+.navbar-brand {
+  color: var(--primary-white) !important;
+}
+
+nav a.nav-link {
+  letter-spacing: 0.0375px;
+  cursor: pointer;
+}
+
+nav ul li {
+  text-transform: uppercase;
+}
+
+.navbar-nav > li > a {
+  color: var(--primary-white) !important;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  border-top: 0.175rem solid var(--primary-dark);
+}
+
+.navbar-nav > li > a.active, 
+.navbar-nav > li > a.active:focus {
+  border-bottom: 0.175rem solid var(--primary-blue);
+}
+
+.navbar-nav > li > a:hover {
+  border-bottom: 0.175rem solid var(--primary-blue);
 }

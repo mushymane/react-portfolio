@@ -10,6 +10,23 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+button a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+  word-spacing: 3px;
+  letter-spacing: 3px;
+}
+
+button a:hover {
+  color: var(--primary-blue);
+  text-decoration: none;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.350);
+}
+
 .App {
   text-align: center;
 }

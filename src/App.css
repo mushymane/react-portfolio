@@ -10,6 +10,10 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+a {
+  color: var(--primary-blue) !important;
+}
+
 button a {
   color: rgb(255, 255, 255);
   text-decoration: none;

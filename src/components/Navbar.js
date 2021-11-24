@@ -7,7 +7,7 @@ const Navbar = ({ currentPage, handlePageChange }) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
-                <a className="navbar-brand" href="#about">Gabriel Lantin</a>
+                <p className="navbar-brand" href="#about">Gabriel Lantin</p>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <FontAwesomeIcon icon={faBars} style={{ color: "white" }} />
                 </button>

@@ -1,32 +1,53 @@
 import React, { useState } from 'react';
 
 export default function Contact() {
-    const [input, setInput] = useState({
-        input: {},
-        errors: {}
-    })
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [nameErrorMessage, setNameErrorMessage] = useState('');
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
+    const [messageErrorMessage, setMessageErrorMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (validate()) {
-            let formInput = {};
-            formInput["name"] = ""
-            formInput["email"] = ""
-            formInput["message"] = ""
-
-            setInput({
-                input: formInput
-            })
-            alert("Your message has been sent");
+        if (!name) {
+            setNameErrorMessage("What's your name? 🥺");
+            return;
         }
+
+        if (!validateEmail(email)) {
+            setEmailErrorMessage('Please enter a valid email address');
+            return;
+        }
+
+        if (!message) {
+            setMessageErrorMessage('Please send me a meaningful message 💜');
+            return;
+        }
+
+        alert("Message submitted successfully. (Actually no this portfolio doesn't have a backend yet, contact me somewhere else!)");
+
+        setName('');
+        setEmail('');
+        setMessage('');
+        setNameErrorMessage('');
+        setEmailErrorMessage('');
+        setMessageErrorMessage('');
     }
 
     const handleChange = (e) => {
-        let formInput = input;
-        formInput[e.target.name] = e.target.value;
-        console.log(formInput)
-        setInput(formInput);
+        const { target } = e;
+        const inputType = target.name;
+        const inputValue = target.value;
+
+        if (inputType === 'name') {
+            setName(inputValue);
+        } else if (inputType === 'email') {
+            setEmail(inputValue);
+        } else {
+            setMessage(inputValue);
+        }
     }
 
     const validateEmail = (email) => {
@@ -34,56 +55,63 @@ export default function Contact() {
         return re.test(String(email).toLowerCase());
     }
 
-    const validatePassword = (password) => {
-        const passregex = /^[A-Za-z]\w{7,14}$/;
-        if (password.match(passregex)) {
-            return true;
-        }
-        return false;
-    }
-
     return (
-        <form className="container mt-3 px-5" onSubmit={handleSubmit}>
-            <h3>Contact</h3>
-            <div className="mb-3">
-                <label for="name" className="form-label">Name</label>
-                <input 
-                    type="text" 
-                    name="name"
-                    className="form-control" 
-                    id="name" 
-                    placeholder="John Doe"
-                    value={input} 
-                    onChange={handleChange}
-                />
-                <div className="text-danger">{input.errors.name}</div>
-            </div>
-            <div className="mb-3">
-                <label for="email" className="form-label">Email address</label>
-                <input 
-                    type="text" 
-                    name="email"
-                    className="form-control" 
-                    id="email" 
-                    placeholder="name@example.com" 
-                    value={input} 
-                    onChange={handleChange}
-                />
-                <div className="text-danger">{input.errors.email}</div>
-            </div>
-            <div className="mb-3">
-                <label for="message" className="form-label">Message</label>
-                <textarea 
-                    className="form-control" 
-                    id="message" 
-                    rows="3"
-                    name="message"
-                    value={input}
-                    onChange={handleChange}>
+        <div>
+            <form className="container mt-3 px-5">
+                <h3>Contact</h3>
+                <div className="mb-3">
+                    <label for="name" className="form-label">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        className="form-control"
+                        id="name"
+                        placeholder="John Doe"
+                        value={name}
+                        onChange={handleChange}
+                    />
+                    {nameErrorMessage && (
+                        <div>
+                            <p className="error-text">{nameErrorMessage}</p>
+                        </div>
+                    )}
+                </div>
+                <div className="mb-3">
+                    <label for="email" className="form-label">Email address</label>
+                    <input
+                        type="email"
+                        name="email"
+                        className="form-control"
+                        id="email"
+                        placeholder="name@example.com"
+                        value={email}
+                        onChange={handleChange}
+                    />
+                    {emailErrorMessage && (
+                        <div>
+                            <p className="error-text">{emailErrorMessage}</p>
+                        </div>
+                    )}
+                </div>
+                <div className="mb-3">
+                    <label for="message" className="form-label">Message</label>
+                    <textarea
+                        className="form-control"
+                        id="message"
+                        rows="3"
+                        name="message"
+                        value={message}
+                        onChange={handleChange}>
 
-                </textarea>
-            </div>
-            <button type="submit" className="btn btn-info">Submit</button>
-        </form>
+                    </textarea>
+                    {messageErrorMessage && (
+                        <div>
+                            <p className="error-text">{messageErrorMessage}</p>
+                        </div>
+                    )}
+                </div>
+                <button type="button" onClick={handleSubmit} className="btn btn-info">Submit</button>
+            </form>
+        </div>
     )
 }

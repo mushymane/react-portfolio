@@ -6,7 +6,7 @@ import resume from '../Resume.pdf'
 
 const Footer = () => {
     return (
-        <div className="container d-flex justify-content-around mx-auto my-2">
+        <div className="d-flex justify-content-around mx-auto my-2" id="footer">
             <a href={resume} target="_blank"><FontAwesomeIcon icon={faFileAlt} size="2x" /></a>
             <a href="https://www.linkedin.com/in/luigilantin/" target="_blank"><FontAwesomeIcon icon={faLinkedin} size="2x" /></a>
             <a href="https://github.com/mushymane" target="_blank"><FontAwesomeIcon icon={faGithubSquare} size="2x" /></a>

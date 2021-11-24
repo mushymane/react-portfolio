@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import resume from '../Resume.pdf'
 
 const Navbar = ({ currentPage, handlePageChange }) => {
     return (
@@ -38,9 +39,8 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link"
-                                href="#resume"
-                                onClick={() => handlePageChange('Resume')}
-                                className={currentPage === 'Resume' ? 'nav-link active' : 'nav-link'}>
+                                href={resume}
+                                target="_blank">
                                 Resume
                             </a>
                         </li>
